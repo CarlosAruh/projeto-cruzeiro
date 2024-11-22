@@ -13,7 +13,7 @@
     "bcryptjs": "^2.4.3",
     "cruzeiro": "file:",
     "mongodb": "^6.11.0",
-    "mongoose": "^8.8.2",
+    "mongoose": "^6.0.0",
     "next": "15.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

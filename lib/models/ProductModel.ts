@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+import { Types } from 'mongoose'
+
 const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
