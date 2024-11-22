@@ -1,3 +1,4 @@
+import AddToCart from '@/components/products/AddToCart'
 import data from '@/lib/data'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -51,7 +52,7 @@ export default function ProductDetails({
             <div className="card-body">
               <div className="mb-2 flex justify-between">
                 <div>Preço</div>
-                <div>R${product.price}</div>
+                <div>R$ {product.price}</div>
               </div>
               <div className="mb-2 flex justify-between">
                 <div>Status</div>
@@ -59,11 +60,13 @@ export default function ProductDetails({
                   {product.countInStock > 0 ? 'In stock' : 'Unavailable'}
                 </div>
               </div>
-              <div className="card-actions justify-center">
-                <button className="btn btn-primary w-full" type="button">
-                  Adicionar ao carrinho
-                </button>
-              </div>
+              {product.countInStock !== 0 && (
+                <div className="card-actions justify-center">
+                  <AddToCart
+                    item={{ ...product, qty: 0, color: '', size: '' }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

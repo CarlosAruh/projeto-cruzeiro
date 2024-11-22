@@ -38,7 +38,7 @@ const data = {
       rating: 4.5,
       numReviews: 3,
       countInStock: 20,
-      description: 'Uma camisa popular',
+      description: 'Uma calça popular',
     },
     {
       name: 'Cropped Ombro',
