@@ -3,6 +3,7 @@ import { signIn, useSession } from 'next-auth/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
+import Link from 'next/link'
 type Inputs = {
   email: string
   password: string
@@ -98,6 +99,12 @@ const Form = () => {
             </button>
           </div>
         </form>
+        <div>
+          Precisa de uma conta?{' '}
+          <Link className="link" href={`/register?callbackUrl=${callbackUrl}`}>
+            Registrar
+          </Link>
+        </div>
       </div>
     </div>
   )
