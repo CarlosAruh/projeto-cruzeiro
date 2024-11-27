@@ -57,6 +57,9 @@ const Menu = () => {
                       <Link href="/order-history">Histórico de pedidos </Link>
                     </li>
                     <li>
+                      <Link href="/profile">Perfil</Link>
+                    </li>
+                    <li>
                       <button type="button" onClick={signoutHandler}>
                         Sair
                       </button>
