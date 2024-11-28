@@ -2,10 +2,12 @@
 import { Order } from '@/lib/models/OrderModel'
 import Link from 'next/link'
 import useSWR from 'swr'
+
 export default function Orders() {
   const { data: orders, error } = useSWR(`/api/admin/orders`)
   if (error) return 'An error has occurred.'
   if (!orders) return 'Loading...'
+
   return (
     <div>
       <h1 className="py-4 text-2xl">Pedidos</h1>
@@ -26,7 +28,7 @@ export default function Orders() {
             {orders.map((order: Order) => (
               <tr key={order._id}>
                 <td>..{order._id.substring(20, 24)}</td>
-                <td>{order.user?.name || 'Deletar usuario'}</td>
+                <td>{order.user?.name || 'Deleted user'}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>R$ {order.totalPrice}</td>
                 <td>
@@ -51,4 +53,5 @@ export default function Orders() {
       </div>
     </div>
   )
+  console.log(orders.user)
 }

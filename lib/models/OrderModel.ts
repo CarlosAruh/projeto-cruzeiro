@@ -44,7 +44,9 @@ const orderSchema = new mongoose.Schema(
   }
 )
 const OrderModel = mongoose.models.Order || mongoose.model('Order', orderSchema)
+
 export default OrderModel
+
 export type Order = {
   _id: string
   user?: { name: string }

@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
 import useSWR from 'swr'
+import useSWRMutation from 'swr/mutation'
 export default function OrderDetails({
   orderId,
   paypalClientId,
@@ -14,7 +15,24 @@ export default function OrderDetails({
   orderId: string
   paypalClientId: string
 }) {
+  const { trigger: deliverOrder, isMutating: isDelivering } = useSWRMutation(
+    `/api/orders/${orderId}`,
+    async (url) => {
+      const res = await fetch(`/api/admin/orders/${orderId}/deliver`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const data = await res.json()
+      res.ok
+        ? toast.success('Pedido entregue com sucesso!')
+        : toast.error(data.message)
+    }
+  )
+
   const { data: session } = useSession()
+  console.log(session)
 
   function createPayPalOrder() {
     return fetch(`/api/orders/${orderId}/create-paypal-order`, {
