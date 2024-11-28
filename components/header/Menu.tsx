@@ -17,6 +17,9 @@ const Menu = () => {
   const { data: session } = useSession()
 
   const { theme, toggleTheme } = useLayoutService()
+  const handleClick = () => {
+    ;(document.activeElement as HTMLElement).blur()
+  }
 
   return (
     <div>
@@ -85,13 +88,13 @@ const Menu = () => {
                     tabIndex={0}
                     className="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 "
                   >
-                    <li>
+                    <li onClick={handleClick}>
                       <Link href="/order-history">Histórico de pedidos </Link>
                     </li>
-                    <li>
+                    <li onClick={handleClick}>
                       <Link href="/profile">Perfil</Link>
                     </li>
-                    <li>
+                    <li onClick={handleClick}>
                       <button type="button" onClick={signoutHandler}>
                         Sair
                       </button>
