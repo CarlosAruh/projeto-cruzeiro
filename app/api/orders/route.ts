@@ -3,16 +3,29 @@ import dbConnect from '@/lib/dbConnect'
 import OrderModel, { OrderItem } from '@/lib/models/OrderModel'
 import ProductModel from '@/lib/models/ProductModel'
 import { round2 } from '@/lib/utils'
+
+export const GET = auth(async (req: any) => {
+  if (!req.auth) {
+    return Response.json(
+      { message: 'unauthorized' },
+      {
+        status: 401,
+      }
+    )
+  }
+  await dbConnect()
+  const orders = await OrderModel.find()
+    .sort({ createdAt: -1 })
+    .populate('user', 'name')
+  return Response.json(orders)
+}) as any
+
 const calcPrices = (orderItems: OrderItem[]) => {
-  // Calculate the items price
   const itemsPrice = round2(
     orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
-  // Calculate the shipping price
   const shippingPrice = round2(itemsPrice > 100 ? 0 : 10)
-  // Calculate the tax price
   const taxPrice = round2(Number((0.15 * itemsPrice).toFixed(2)))
-  // Calculate the total price
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice)
   return { itemsPrice, shippingPrice, taxPrice, totalPrice }
 }
