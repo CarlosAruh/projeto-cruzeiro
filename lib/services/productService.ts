@@ -4,7 +4,7 @@ import ProductModel, { Product } from '@/lib/models/ProductModel'
 export const revalidate = 3600
 const getLatest = cache(async () => {
   await dbConnect()
-  const products = await ProductModel.find({}).sort({ _id: -1 }).limit(4).lean()
+  const products = await ProductModel.find({}).sort({ _id: -1 }).limit(6).lean()
   return products as unknown as Product[]
 })
 const getFeatured = cache(async () => {
