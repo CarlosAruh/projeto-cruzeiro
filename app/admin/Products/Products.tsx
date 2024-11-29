@@ -10,7 +10,9 @@ import useSWRMutation from 'swr/mutation'
 
 export default function Products() {
   const { data: products, error } = useSWR(`/api/admin/products`)
+
   const router = useRouter()
+
   const { trigger: deleteProduct } = useSWRMutation(
     `/api/admin/products`,
     async (url, { arg }: { arg: { productId: string } }) => {
