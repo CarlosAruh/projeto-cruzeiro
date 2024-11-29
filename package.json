@@ -12,6 +12,7 @@
     "@paypal/react-paypal-js": "^8.7.0",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.1",
+    "cloudinary": "^1.41.2",
     "cruzeiro": "file:",
     "mongoose": "^8.0.3",
     "next": "^14.2.18",
