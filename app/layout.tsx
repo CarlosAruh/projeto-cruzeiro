@@ -29,7 +29,7 @@ export default function RootLayout({
                 <Header />
                 {children}
                 <footer className="footer footer-center p-4 bg-base-300 text-base-content">
-                  <p>Copyright © 2023 - All right reserved by Samashop </p>
+                  <p>Copyright © 2024 - All right reserved by Carlos Aruh </p>
                 </footer>
               </div>
             </div>
