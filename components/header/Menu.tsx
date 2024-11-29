@@ -64,7 +64,7 @@ const Menu = () => {
           </i>
           <li>
             <Link className="btn btn-ghost rounded-btn" href="/cart">
-              Cart
+              Carrinho
               {mounted && items.length != 0 && (
                 <div className="badge badge-secondary">
                   {items.reduce((a, c) => a + c.qty, 0)}{' '}
